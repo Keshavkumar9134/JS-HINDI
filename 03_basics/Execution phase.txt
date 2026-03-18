@@ -1,0 +1,37 @@
+let val1 = 10
+let val2 = 5
+function addNum(num1, num2){
+    let total = num1+num2;
+    return total
+}
+let result1 = addNum(val1,val2);
+let result2 = addNum(10,2);
+
+
+//execution phase of above code
+1. GLOBAL EXECUTION       <-----------------------<---------<-|
+  : firstly it define global Window object, (this)            |
+                                                              |
+2. MEMORY PHASE                                               |
+  :val1 -> undefined                                          |
+   Val2 -> undefined                                          |
+   addNum -> defination                                       |
+   result1 -> undefined                                       |
+   result2 -> undefined                                       |
+                                                              |
+3.  EXECUTION PHASE                                           |
+   :val1 -> 10                                                |
+    Val2 -> 5                                                 |
+    addNum -> -------->---------------->--\                   |
+    result1 -> 15 //after executionand     |                  | 
+                  deletion addNum(10,2)    |                  | 
+                  will execute for         |                  |
+                  result2                  |                  |
+    result2 ->---------------------->----- |                  |
+                                new variable environment      |
+                                        +            ---->-----
+                                Execution Thread
+                                 
+                                       ^
+                                       |....---->after execution of the function got deleted
+
